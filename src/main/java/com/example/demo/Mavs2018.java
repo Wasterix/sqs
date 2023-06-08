@@ -24,7 +24,7 @@ public class Mavs2018 {
 
             // Starten des HTTP-Servers
             server.start();
-            System.out.println("HTTP-Server läuft auf http://localhost:8000/games");
+            System.out.println("HTTP-Server läuft auf http://localhost:8000/mavs");
         } catch (IOException e) {
             e.printStackTrace();
         }
