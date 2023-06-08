@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.http;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,11 +20,11 @@ public class Mavs2018 {
             HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 
             // Definieren des HTTP-Endpunkts
-            server.createContext("/mavs", new GamesHandler());
+            server.createContext("/mavs2018", new GamesHandler());
 
             // Starten des HTTP-Servers
             server.start();
-            System.out.println("HTTP-Server läuft auf http://localhost:8000/mavs");
+            System.out.println("HTTP-Server läuft auf http://localhost:8000/mavs2018");
         } catch (IOException e) {
             e.printStackTrace();
         }

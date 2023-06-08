@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.example.demo.spring;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
@@ -10,13 +13,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @RestController
-public class DirkFrontend {
+public class GreetingController {
+    @RequestMapping("/beatles")
+    public String getGreeting() {
+        return "The beatles are great";
+    }
 
-    @GetMapping("/players")
+    @RequestMapping("/metallica")
+    public String getGreeting2() {
+        return "Metallica is nice";
+    }
+
+    @GetMapping("/lebron")
     public String getPlayers() {
         try {
-            // URL der API-Endpunkts
-            String apiUrl = "https://www.balldontlie.io/api/v1/players?search=Nowitzki";
+            // URL der API-Endpunkts (id 237 entspricht Lebron James)
+            String apiUrl = "https://www.balldontlie.io/api/v1/stats?seasons[]=2018&player_ids[]=237";
 
             // Erstellen der URL-Objekts
             URL url = new URL(apiUrl);

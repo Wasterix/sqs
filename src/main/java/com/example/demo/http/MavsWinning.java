@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.http;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +24,7 @@ public class MavsWinning {
 
             // Starten des HTTP-Servers
             server.start();
-            System.out.println("HTTP-Server läuft auf http://localhost:8000/mavs");
+            System.out.println("HTTP-Server läuft auf http://localhost:8000/mavs_win");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class MavsWinning {
         public void handle(HttpExchange exchange) throws IOException {
             try {
                 // URL des API-Endpunkts für Spiele
-                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=7&per_page=20";
+                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=7&per_page=80";
 
                 // Erstellen des URL-Objekts
                 URL url = new URL(gamesApiUrl);
