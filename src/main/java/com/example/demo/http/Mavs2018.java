@@ -35,7 +35,7 @@ public class Mavs2018 {
         public void handle(HttpExchange exchange) throws IOException {
             try {
                 // URL des API-Endpunkts für Spiele
-                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=7&per_page=10";
+                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=7&per_page=90";
                 //String gamesApiUrl = "https://www.balldontlie.io/api/v1/players";
 
                 // Erstellen des URL-Objekts
@@ -87,6 +87,7 @@ public class Mavs2018 {
         }
     }
 
+
     // Hilfsmethode zum Parsen der JSON-Antwort und Erstellen der HTML-Tabelle
     private static String parseJsonResponse(String jsonResponse) throws IOException {
         // JSON-Daten in Java-Objekte konvertieren
@@ -95,9 +96,10 @@ public class Mavs2018 {
 
         // HTML-Tabelle erstellen
         StringBuilder htmlTable = new StringBuilder();
-        htmlTable.append("<table><tr><th>Game ID</th><th>Season</th><th>Home Team</th><th>Visitor Team</th><th>Home Score</th><th>Visitor Score</th></tr>");
+        htmlTable.append("<table><tr><th>Game Number</th><th>Game ID</th><th>Season</th><th>Home Team</th><th>Visitor Team</th><th>Home Score</th><th>Visitor Score</th></tr>");
 
         // Schleife durch die Spieldaten und Erstellen der Tabellenzeilen
+        int gameNumber = 1;
         for (JsonNode gameNode : gamesNode) {
             int gameId = gameNode.get("id").asInt();
             String season = gameNode.get("season").asText();
@@ -106,12 +108,16 @@ public class Mavs2018 {
             int homeScore = gameNode.get("home_team_score").asInt();
             int visitorScore = gameNode.get("visitor_team_score").asInt();
 
-            htmlTable.append("<tr><td>").append(gameId).append("</td><td>").append(season).append("</td><td>")
-                    .append(homeTeam).append("</td><td>").append(visitorTeam).append("</td><td>")
-                    .append(homeScore).append("</td><td>").append(visitorScore).append("</td></tr>");
+            htmlTable.append("<tr><td>").append(gameNumber).append("</td><td>").append(gameId).append("</td><td>")
+                    .append(season).append("</td><td>").append(homeTeam).append("</td><td>")
+                    .append(visitorTeam).append("</td><td>").append(homeScore).append("</td><td>")
+                    .append(visitorScore).append("</td></tr>");
+
+            gameNumber++;
         }
 
         htmlTable.append("</table>");
         return htmlTable.toString();
     }
+
 }
