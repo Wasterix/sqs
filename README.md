@@ -1,1 +1,1 @@
-# sqs
+# Projektdokumentation
