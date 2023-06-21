@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
 
-public class Get_Teams {
+public class Get_all_Teams {
     public static void main(String[] args) {
         try {
             // Erstellen des HTTP-Servers auf Port 8000
@@ -89,7 +89,7 @@ public class Get_Teams {
             }
         }
 
-        // Hilfsmethode zum Erstellen der HTML-Tabelle mit ID und Teamnamen
+        // Hilfsmethode zum Erstellen der HTML-Tabelle mit ID, Stadt, Teamname und vollem Namen
         private static StringBuilder createTable(String jsonResponse) {
             StringBuilder table = new StringBuilder();
             table.append("<h2>Teams</h2>")
