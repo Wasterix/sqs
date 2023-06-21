@@ -13,24 +13,70 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Games_in_2020 {
+public class Games_in_2022 {
     public static void main(String[] args) {
+
+        // Erstelle eine Map, um die ID den Städten zuzuordnen
+        Map<Integer, String> lookupTable = new HashMap<>();
+
+        // Füge die Zuordnungen hinzu
+        lookupTable.put(1, "Atlanta Hawks");
+        lookupTable.put(2, "Boston Celtics");
+        lookupTable.put(3, "Brooklyn Nets");
+        lookupTable.put(4, "Charlotte Hornets");
+        lookupTable.put(5, "Chicago Bulls");
+        lookupTable.put(6, "Cleveland Cavaliers");
+        lookupTable.put(7, "Dallas Mavericks");
+        lookupTable.put(8, "Denver Nuggets");
+        lookupTable.put(9, "Detroit Pistons");
+        lookupTable.put(10, "Golden State Warriors");
+        lookupTable.put(11, "Houston Rockets");
+        lookupTable.put(12, "Indiana Pacers");
+        lookupTable.put(13, "LA Clippers");
+        lookupTable.put(14, "Los Angeles Lakers");
+        lookupTable.put(15, "Memphis Grizzlies");
+        lookupTable.put(16, "Miami Heat");
+        lookupTable.put(17, "Milwaukee Bucks");
+        lookupTable.put(18, "Minnesota Timberwolves");
+        lookupTable.put(19, "New Orleans Pelicans");
+        lookupTable.put(20, "New York Knicks");
+        lookupTable.put(21, "Oklahoma City Thunder");
+        lookupTable.put(22, "Orlando Magic");
+        lookupTable.put(23, "Philadelphia 76ers");
+        lookupTable.put(24, "Phoenix Suns");
+        lookupTable.put(25, "Portland Trail Blazers");
+        lookupTable.put(26, "Sacramento Kings");
+        lookupTable.put(27, "San Antonio Spurs");
+        lookupTable.put(28, "Toronto Raptors");
+        lookupTable.put(29, "Utah Jazz");
+        lookupTable.put(30, "Washington Wizards");
+
+        // Erstelle die umgekehrte Lookup-Tabelle
+        Map<String, Integer> reverseLookupTable = new HashMap<>();
+        for (Map.Entry<Integer, String> entry : lookupTable.entrySet()) {
+            Integer key = entry.getKey();
+            String value = entry.getValue();
+            reverseLookupTable.put(value, key);
+        }
 
         // Erstelle einen Scanner, um die Konsoleneingabe zu lesen
         Scanner scanner = new Scanner(System.in);
         // Fordere den Benutzer auf, eine Eingabe einzugeben
-        System.out.print("Gib Team_Id an: ");
+        System.out.print("Gib einen vollständigen Teamnamen an: ");
         // Lese die Eingabe des Benutzers
-        String input_id = scanner.nextLine();
+        String input_name = scanner.nextLine();
         // Schließe den Scanner, um Ressourcen freizugeben
         scanner.close();
-        // Gib die eingegebene Variable aus
-        System.out.println("Team_Id lautet: " + input_id);
+
+
+        // Beispielabfrage: Schlüssel für den Wert "Los Angeles Lakers" abrufen
+        //String gesuchterWert = "Los Angeles Lakers";
+        Integer input_id_int = reverseLookupTable.get(input_name);
+        String input_id = Integer.toString(input_id_int);
+
+        System.out.println("Die Id der " + input_name + " lautet: "+ input_id);
 
 
         try {
@@ -38,11 +84,11 @@ public class Games_in_2020 {
             HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 
             // Definieren des HTTP-Endpunkts
-            server.createContext("/2020", new GamesHandler(input_id));
+            server.createContext("/2022", new GamesHandler(input_id));
 
             // Starten des HTTP-Servers
             server.start();
-            System.out.println("HTTP-Server läuft auf http://localhost:8000/2020");
+            System.out.println("HTTP-Server läuft auf http://localhost:8000/2022");
         } catch (IOException e) {
             e.printStackTrace();
         }
