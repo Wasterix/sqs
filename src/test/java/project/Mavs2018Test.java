@@ -1,4 +1,4 @@
-package com.example.demo;
+package project;
 
 import org.junit.jupiter.api.Test;
 import java.io.IOException;

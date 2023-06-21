@@ -1,4 +1,4 @@
-package com.example.demo;
+package project;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,16 +20,29 @@ import java.util.Scanner;
 
 public class Games_in_2020 {
     public static void main(String[] args) {
+
+        // Erstelle einen Scanner, um die Konsoleneingabe zu lesen
+        Scanner scanner = new Scanner(System.in);
+        // Fordere den Benutzer auf, eine Eingabe einzugeben
+        System.out.print("Gib Team_Id an: ");
+        // Lese die Eingabe des Benutzers
+        String input_id = scanner.nextLine();
+        // Schließe den Scanner, um Ressourcen freizugeben
+        scanner.close();
+        // Gib die eingegebene Variable aus
+        System.out.println("Team_Id lautet: " + input_id);
+
+
         try {
             // Erstellen des HTTP-Servers auf Port 8000
             HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 
             // Definieren des HTTP-Endpunkts
-            server.createContext("/mavs2018ha", new GamesHandler());
+            server.createContext("/2020", new GamesHandler(input_id));
 
             // Starten des HTTP-Servers
             server.start();
-            System.out.println("HTTP-Server läuft auf http://localhost:8000/mavs2018ha");
+            System.out.println("HTTP-Server läuft auf http://localhost:8000/2020");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,27 +50,19 @@ public class Games_in_2020 {
 
 
     static class GamesHandler implements HttpHandler {
+        private final String teamId;
+
+        public GamesHandler(String teamId){
+            this.teamId = teamId;
+        }
         @Override
         public void handle(HttpExchange exchange) throws IOException {
 
-            // Erstelle einen Scanner, um die Konsoleneingabe zu lesen
-            Scanner scanner = new Scanner(System.in);
 
-            // Fordere den Benutzer auf, eine Eingabe einzugeben
-            System.out.print("Gib Team_Id an: ");
-
-            // Lese die Eingabe des Benutzers
-            String input_id = scanner.nextLine();
-
-            // Schließe den Scanner, um Ressourcen freizugeben
-            scanner.close();
-
-            // Gib die eingegebene Variable aus
-            System.out.println("Team_Id lautet: " + input_id);
 
             try {
                 // URL des API-Endpunkts für Spiele
-                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=" + input_id + "&per_page=82";
+                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=" + teamId + "&per_page=82";
 
                 // Erstellen des URL-Objekts
                 URL url = new URL(gamesApiUrl);
