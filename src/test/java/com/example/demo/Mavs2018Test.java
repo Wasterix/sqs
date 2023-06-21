@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.http.Mavs2018;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class Mavs2018Test {
 
