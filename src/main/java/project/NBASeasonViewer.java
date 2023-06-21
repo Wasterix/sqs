@@ -14,8 +14,13 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.util.*;
+import java.util.Scanner;
 
-public class Games_in_2022 {
+//todo: Richtige Formattierung der Tabelle mit Heim und Auswärts fehlt
+//todo: Eingabe soll auch nur Dallas oder nur Mavericks erlauben
+//todo: Jahr soll noch in Eingabe abgefragt werden
+
+public class NBASeasonViewer {
     public static void main(String[] args) {
 
         // Erstelle eine Map, um die ID den Städten zuzuordnen
@@ -61,22 +66,33 @@ public class Games_in_2022 {
             reverseLookupTable.put(value, key);
         }
 
-        // Erstelle einen Scanner, um die Konsoleneingabe zu lesen
+        // Eingabe der Mannschaft
         Scanner scanner = new Scanner(System.in);
         // Fordere den Benutzer auf, eine Eingabe einzugeben
         System.out.print("Gib einen vollständigen Teamnamen an: ");
         // Lese die Eingabe des Benutzers
         String input_name = scanner.nextLine();
         // Schließe den Scanner, um Ressourcen freizugeben
-        scanner.close();
+        //scanner.close();
 
-
-        // Beispielabfrage: Schlüssel für den Wert "Los Angeles Lakers" abrufen
-        //String gesuchterWert = "Los Angeles Lakers";
+        // Abfrage
         Integer input_id_int = reverseLookupTable.get(input_name);
-        String input_id = Integer.toString(input_id_int);
-
+        String input_id = (input_id_int != null) ? Integer.toString(input_id_int) : null;
         System.out.println("Die Id der " + input_name + " lautet: "+ input_id);
+
+
+        // Eingabe des Jahres
+        //Scanner scanner = new Scanner(System.in);
+        // Fordere den Benutzer auf, eine Eingabe einzugeben
+        System.out.print("Welche Saison soll angezeigt werden: ");
+
+        // Lese die Eingabe des Benutzers
+        String input_season = scanner.nextLine();
+
+        System.out.println("Jahr: " + input_season);
+
+        // Schließe den Scanner, nachdem die Eingabe gelesen wurde
+        scanner.close();
 
 
         try {
@@ -84,11 +100,11 @@ public class Games_in_2022 {
             HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 
             // Definieren des HTTP-Endpunkts
-            server.createContext("/2022", new GamesHandler(input_id));
+            server.createContext("/" + input_season, new GamesHandler(input_id, input_season));
 
             // Starten des HTTP-Servers
             server.start();
-            System.out.println("HTTP-Server läuft auf http://localhost:8000/2022");
+            System.out.println("HTTP-Server läuft auf http://localhost:8000/" + input_season);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,10 +113,14 @@ public class Games_in_2022 {
 
     static class GamesHandler implements HttpHandler {
         private final String teamId;
+        private final String season;
 
-        public GamesHandler(String teamId){
+
+        public GamesHandler(String teamId, String season){
             this.teamId = teamId;
+            this.season = season;
         }
+
         @Override
         public void handle(HttpExchange exchange) throws IOException {
 
@@ -108,7 +128,7 @@ public class Games_in_2022 {
 
             try {
                 // URL des API-Endpunkts für Spiele
-                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=2022&team_ids[]=" + teamId + "&per_page=82";
+                String gamesApiUrl = "https://www.balldontlie.io/api/v1/games?seasons[]=" + season + "&team_ids[]=" + teamId + "&per_page=82";
 
                 // Erstellen des URL-Objekts
                 URL url = new URL(gamesApiUrl);
