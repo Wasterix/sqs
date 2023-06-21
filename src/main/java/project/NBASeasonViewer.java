@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 //todo: Richtige Formattierung der Tabelle mit Heim und Auswärts fehlt
 //todo: Eingabe soll auch nur Dallas oder nur Mavericks erlauben
-//todo: Jahr soll noch in Eingabe abgefragt werden
+//todo: Game Number Counter soll auf 82 hoch laufen.
 
 public class NBASeasonViewer {
     public static void main(String[] args) {
