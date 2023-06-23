@@ -16,74 +16,56 @@ public class NBASeasonViewer {
 
 
         // Erstelle eine Map, um die ID den Städten zuzuordnen
-        Map<Integer, String> lookupTable = new HashMap<>();
+        Map<String, Integer> lookupTable = new HashMap<>();
 
         // Füge die Zuordnungen hinzu
-        lookupTable.put(1, "Atlanta Hawks");
-        lookupTable.put(2, "Boston Celtics");
-        lookupTable.put(3, "Brooklyn Nets");
-        lookupTable.put(4, "Charlotte Hornets");
-        lookupTable.put(5, "Chicago Bulls");
-        lookupTable.put(6, "Cleveland Cavaliers");
-        lookupTable.put(7, "Dallas Mavericks");
-        lookupTable.put(8, "Denver Nuggets");
-        lookupTable.put(9, "Detroit Pistons");
-        lookupTable.put(10, "Golden State Warriors");
-        lookupTable.put(11, "Houston Rockets");
-        lookupTable.put(12, "Indiana Pacers");
-        lookupTable.put(13, "LA Clippers");
-        lookupTable.put(14, "Los Angeles Lakers");
-        lookupTable.put(15, "Memphis Grizzlies");
-        lookupTable.put(16, "Miami Heat");
-        lookupTable.put(17, "Milwaukee Bucks");
-        lookupTable.put(18, "Minnesota Timberwolves");
-        lookupTable.put(19, "New Orleans Pelicans");
-        lookupTable.put(20, "New York Knicks");
-        lookupTable.put(21, "Oklahoma City Thunder");
-        lookupTable.put(22, "Orlando Magic");
-        lookupTable.put(23, "Philadelphia 76ers");
-        lookupTable.put(24, "Phoenix Suns");
-        lookupTable.put(25, "Portland Trail Blazers");
-        lookupTable.put(26, "Sacramento Kings");
-        lookupTable.put(27, "San Antonio Spurs");
-        lookupTable.put(28, "Toronto Raptors");
-        lookupTable.put(29, "Utah Jazz");
-        lookupTable.put(30, "Washington Wizards");
+        lookupTable.put("Atlanta Hawks", 1);
+        lookupTable.put("Boston Celtics", 2);
+        lookupTable.put("Brooklyn Nets", 3);
+        lookupTable.put("Charlotte Hornets", 4);
+        lookupTable.put("Chicago Bulls", 5);
+        lookupTable.put("Cleveland Cavaliers", 6);
+        lookupTable.put("Dallas Mavericks", 7);
+        lookupTable.put("Denver Nuggets", 8);
+        lookupTable.put("Detroit Pistons", 9);
+        lookupTable.put("Golden State Warriors", 10);
+        lookupTable.put("Houston Rockets", 11);
+        lookupTable.put("Indiana Pacers", 12);
+        lookupTable.put("LA Clippers", 13);
+        lookupTable.put("Los Angeles Lakers", 14);
+        lookupTable.put("Memphis Grizzlies", 15);
+        lookupTable.put("Miami Heat", 16);
+        lookupTable.put("Milwaukee Bucks", 17);
+        lookupTable.put("Minnesota Timberwolves", 18);
+        lookupTable.put("New Orleans Pelicans", 19);
+        lookupTable.put("New York Knicks", 20);
+        lookupTable.put("Oklahoma City Thunder", 21);
+        lookupTable.put("Orlando Magic", 22);
+        lookupTable.put("Philadelphia 76ers", 23);
+        lookupTable.put("Phoenix Suns", 24);
+        lookupTable.put("Portland Trail Blazers", 25);
+        lookupTable.put("Sacramento Kings", 26);
+        lookupTable.put("San Antonio Spurs", 27);
+        lookupTable.put("Toronto Raptors", 28);
+        lookupTable.put("Utah Jazz", 29);
+        lookupTable.put("Washington Wizards", 30);
 
-        // Erstelle die umgekehrte Lookup-Tabelle
-        Map<String, Integer> reverseLookupTable = new HashMap<>();
-        for (Map.Entry<Integer, String> entry : lookupTable.entrySet()) {
-            Integer key = entry.getKey();
-            String value = entry.getValue();
-            reverseLookupTable.put(value, key);
-        }
 
-        // Eingabe der Mannschaft
+        // Abfrage der Mannschaft
         Scanner scanner = new Scanner(System.in);
-        // Fordere den Benutzer auf, eine Eingabe einzugeben
         System.out.print("Gib einen vollständigen Teamnamen an: ");
-        // Lese die Eingabe des Benutzers
         String input_name = scanner.nextLine();
-        // Schließe den Scanner, um Ressourcen freizugeben
-        //scanner.close();
 
-        // Abfrage
-        Integer input_id_int = reverseLookupTable.get(input_name);
+        Integer input_id_int = lookupTable.get(input_name);
         String input_id = (input_id_int != null) ? Integer.toString(input_id_int) : null;
         System.out.println("Die Id der " + input_name + " lautet: " + input_id);
 
 
-        // Eingabe des Jahres
-        //Scanner scanner = new Scanner(System.in);
-        // Fordere den Benutzer auf, eine Eingabe einzugeben
+        // Abfrage des Jahres
         System.out.print("Welche Saison soll angezeigt werden: ");
-
-        // Lese die Eingabe des Benutzers
         String input_season = scanner.nextLine();
-
         System.out.println("Jahr: " + input_season);
 
-        // Schließe den Scanner, nachdem die Eingabe gelesen wurde
         scanner.close();
 
 
