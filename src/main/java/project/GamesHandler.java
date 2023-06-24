@@ -14,7 +14,7 @@ public class GamesHandler implements HttpHandler {
     private final String teamId;
     private final String season;
     private final String input_name;
-    private ParseJsonResponse jsonResponse2 = new ParseJsonResponse();
+    ParseJsonResponse jsonResponse2 = new ParseJsonResponse();
 
 
 
@@ -55,8 +55,8 @@ public class GamesHandler implements HttpHandler {
                 // Parsing der JSON-Antwort
                 String jsonResponse = response.toString();
                 //String htmlTable = parseJsonResponse(jsonResponse);
-                String htmlTable = jsonResponse2.parseJasonResponseRESTAPI(jsonResponse, input_name);
-
+                //String htmlTable = jsonResponse2.parseJasonResponseRESTAPI(jsonResponse, input_name);
+                String htmlTable = jsonResponse2.parseJsonResponseRESTAPI(jsonResponse, input_name);
 
                 // Setzen der HTML-Antwort
                 exchange.getResponseHeaders().add("Content-Type", "text/html");
@@ -95,4 +95,5 @@ public class GamesHandler implements HttpHandler {
             outputStream.write(errorMessage.getBytes());
             outputStream.close();
         }
-    }}
+    }
+}
