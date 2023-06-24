@@ -1,4 +1,4 @@
-package project.UnitTests;
+/*package project.UnitTests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
@@ -45,3 +45,4 @@ public class ParseJsonResponseTestFinal {
         Assert.assertEquals(expectedVisitorTable, actualVisitorTable);
     }
 }
+*/

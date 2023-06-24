@@ -60,6 +60,9 @@ public class HttpServerManagerTest {
     public void testGetServerURL() {
         httpServerManager.startHttpServer(testTeamId, testInputSeason, testYear);
 
-        assertEquals(expectedURL, httpServerManager.getServer());
+        String actualURLAsString = httpServerManager.getServer().toString();
+
+        assertEquals(expectedURL, actualURLAsString);
     }
+
 }
