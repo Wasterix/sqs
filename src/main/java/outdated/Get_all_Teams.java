@@ -1,4 +1,4 @@
-package project;
+package outdated;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
