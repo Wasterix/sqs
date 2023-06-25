@@ -1,70 +1,45 @@
-/*package project.UnitTests;
+package project.UnitTests;
 
 import com.sun.net.httpserver.HttpServer;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import project.HttpServerManager;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 public class HttpServerManagerTest {
     private HttpServerManager httpServerManager;
-    private HttpServer httpServer;
-    private String testTeamId = "testTeamId";
-    private String testInputSeason = "testInputSeason";
-    private String testYear = "testYear";
-    private String expectedEndpoint = "/id=testTeamId&season=testInputSeason/testYear";
-    private String expectedURL = "http://localhost:8000/id=testTeamId&season=testInputSeason/testYear";
+    private String teamId = "7";
+    private String inputSeason = "2015";
+    private String year = "2016";
 
-    @BeforeEach
-    public void setup() throws IOException {
+    @Before
+    public void setup() {
         httpServerManager = new HttpServerManager();
-        httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
+        httpServerManager.startHttpServer(teamId, inputSeason, year);
     }
 
-    @AfterEach
-    public void tearDown() {
-        httpServer.stop(0);
-    }
-
-    @Test
-    public void testStartHttpServer() {
-        httpServerManager.startHttpServer(testTeamId, testInputSeason, testYear);
-
-        assertNotNull(httpServerManager.getServer().getAddress());
-
-        String actualURL = "http://" + httpServerManager.getServer().getAddress().getHostName() +
-                ":" + httpServerManager.getServer().getAddress().getPort() + expectedEndpoint;
-
-        assertEquals(expectedURL, actualURL);
-    }
-
-
-    @Test
-    public void testStopHttpServer() {
-        httpServerManager.startHttpServer(testTeamId, testInputSeason, testYear);
-
-        assertNotNull(httpServerManager.getServer().getAddress());
-
+    @After
+    public void teardown() {
         httpServerManager.stopHttpServer();
-
-        assertNull(httpServerManager.getServer().getAddress());
     }
 
-    // Neue Methode zur Überprüfung der Server-URL
     @Test
-    public void testGetServerURL() {
-        httpServerManager.startHttpServer(testTeamId, testInputSeason, testYear);
+    public void testServerResponseCode() throws IOException {
+        // Verbinden mit dem HTTP-Server und Überprüfen des Response-Codes
+        URL url = new URL("http://localhost:8000/id=" + teamId + "&season=" + inputSeason + "/" + year);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
 
-        String actualURLAsString = httpServerManager.getServer().toString();
+        int responseCode = connection.getResponseCode();
+        assertEquals(200, responseCode);
 
-        assertEquals(expectedURL, actualURLAsString);
+        connection.disconnect();
     }
-
 }
 
- */
