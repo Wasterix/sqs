@@ -7,7 +7,7 @@ public class NBAViewerMain {
         NBASeasonViewer viewer = new NBASeasonViewer();
         viewer.run();
     }
-
+/*
     public void run() {
         InputHandler inputHandler = new InputHandler();
         DataProcessor dataProcessor = new DataProcessor();
@@ -21,5 +21,5 @@ public class NBAViewerMain {
 
         dataProcessor.processInput(inputName, teamId, inputSeason, year);
         httpServerManager.startHttpServer(teamId, inputSeason, year);
-    }
+    }*/
 }

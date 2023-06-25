@@ -11,9 +11,7 @@ import java.util.Scanner;
 
 public class NBASeasonViewer {
     private static Map<String, Integer> lookupTable;
-
     private String teamId;
-
     private String inputSeason;
     private String year;
     private String inputName;
@@ -117,26 +115,5 @@ public class NBASeasonViewer {
         lookupTable.put("Toronto Raptors", 28);
         lookupTable.put("Utah Jazz", 29);
         lookupTable.put("Washington Wizards", 30);
-    }
-
-    public String getInputId() {
-        return teamId;
-    }
-
-    public String getInputSeason() {
-        return inputSeason;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public String getInputName() {
-        return inputName;
-    }
-
-    public static void main(String[] args) {
-        NBASeasonViewer viewer = new NBASeasonViewer();
-        viewer.run();
     }
 }
