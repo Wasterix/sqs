@@ -37,7 +37,7 @@ class DataProcessorTest {
         String printedOutput = outputStream.toString().trim();
 
         // Define the expected output
-        String expectedOutput = "Die Id der Boston Celtics lautet: 2\n" +
+        String expectedOutput = "Die Id der Boston Celtics lautet: 2" +
                 "Ausgewählte Saison: 2015/2016";
 
         // Assert that the printed output matches the expected output

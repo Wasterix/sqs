@@ -79,7 +79,7 @@ public class GamesHandler implements HttpHandler {
                 offset += length;
             }
             // Ausgabe des Response auf der Konsole
-            System.out.println("Response: " + htmlTable);
+            //System.out.println("Response: " + htmlTable);
         }
     }
 
