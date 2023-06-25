@@ -10,10 +10,12 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ParseJsonResponse {
-    public String parseJsonResponseRESTAPI(String jsonResponse, String inputName) throws IOException {
+    public String parseJsonResponseRESTAPI(String jsonResponse, String inputName, String inputSeason) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode gamesNode = objectMapper.readTree(jsonResponse).get("data");
-
+        if (gamesNode == null || gamesNode.isEmpty()) {
+            return "Die " +inputName+ " waren " +inputSeason+ " vermutlich noch nicht in der NBA.";
+        }
         List<JsonNode> homeGames = new ArrayList<>();
         List<JsonNode> visitorGames = new ArrayList<>();
 
@@ -75,5 +77,6 @@ public class ParseJsonResponse {
         table.append("</table>");
 
         return table;
+
     }
 }
