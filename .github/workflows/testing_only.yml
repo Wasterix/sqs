@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run Unit Tests
-      run: mvn test -f src/test/java/UnitTests/pom.xml
+      run: mvn test -f pom.xml
 
     - name: Run Integration Tests
-      run: mvn test -f src/test/java/IntegrationTests/pom.xml
+      run: mvn test -f pom.xml
