@@ -1,8 +1,9 @@
-package project.IntegrationTests;
+package IntegrationTests;
 
 import org.junit.jupiter.api.Test;
 import project.DataProcessor;
 import project.LookupTable;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

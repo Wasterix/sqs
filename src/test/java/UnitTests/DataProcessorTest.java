@@ -1,7 +1,8 @@
-package project.UnitTests;
+package UnitTests;
 
 import org.junit.jupiter.api.Test;
 import project.DataProcessor;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -17,7 +18,7 @@ class DataProcessorTest {
         PrintStream originalPrintStream = System.out;
         System.setOut(printStream);
 
-        // Create an instance of DataProcessor
+        // Create an instance of project.DataProcessor
         DataProcessor dataProcessor = new DataProcessor();
 
         // Define test input values
@@ -46,7 +47,7 @@ class DataProcessorTest {
 
     @Test
     void calculateYear_validInput_returnsCorrectYear() {
-        // Create an instance of DataProcessor
+        // Create an instance of project.DataProcessor
         DataProcessor dataProcessor = new DataProcessor();
 
         // Define test input value

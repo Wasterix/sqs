@@ -1,4 +1,4 @@
-package project.UnitTests;
+package UnitTests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

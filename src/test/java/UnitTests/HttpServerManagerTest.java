@@ -1,6 +1,5 @@
-package project.UnitTests;
+package UnitTests;
 
-import com.sun.net.httpserver.HttpServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

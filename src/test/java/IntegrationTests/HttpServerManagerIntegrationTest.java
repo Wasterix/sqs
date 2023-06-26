@@ -1,4 +1,4 @@
-package project.IntegrationTests;
+package IntegrationTests;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -6,13 +6,11 @@ import com.sun.net.httpserver.HttpServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import project.GamesHandler;
 import project.HttpServerManager;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
-import java.net.URI;
 import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

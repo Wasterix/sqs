@@ -1,4 +1,4 @@
-package project.IntegrationTests;
+package IntegrationTests;
 
 import org.junit.jupiter.api.Test;
 import project.ParseJsonResponse;
