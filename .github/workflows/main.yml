@@ -1,0 +1,26 @@
+name: Automatisierte Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build with Maven
+      run: mvn clean install -f src/main/java/project/pom.xml
+
+    - name: Run Unit Tests
+      run: mvn test -f src/test/java/UnitTests/pom.xml
+
+    - name: Run Integration Tests
+      run: mvn test -f src/test/java/IntegrationTests/pom.xml
