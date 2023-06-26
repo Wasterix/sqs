@@ -25,7 +25,7 @@ public class InputHandler {
     }
 
     public String getInputSeason() {
-        int minYear = 1945;
+        int minYear = 1949;
         int maxYear = 2022;
 
         boolean isValidInput = false;
