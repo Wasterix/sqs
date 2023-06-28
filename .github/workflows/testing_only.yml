@@ -1,4 +1,4 @@
-name: SonarCloud
+name: Unit, Integration and Sonarcloud
 on:
   push:
     branches:
