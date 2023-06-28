@@ -1,7 +1,7 @@
 package UnitTests;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import project.InputHandler;
 
@@ -15,13 +15,13 @@ public class InputHandlerTest {
     private InputStream standardIn;
     private Scanner scanner;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         standardIn = System.in;
         scanner = new Scanner(System.in);
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         System.setIn(standardIn);
         scanner.close();
