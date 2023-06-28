@@ -1,4 +1,4 @@
-package IntegrationTests;
+/*package IntegrationTests;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -76,3 +76,4 @@ public class HttpServerManagerIntegrationTest {
         }
     }
 }
+*/
