@@ -29,8 +29,7 @@ public class DataProcessorIntegrationTest {
         System.out.flush();
         System.setOut(originalPrintStream);
 
-        String expectedOutput = "Die Id der Brooklyn Nets lautet: 3" + System.lineSeparator()
-                + "Ausgewählte Saison: 2021/2022" + System.lineSeparator();
+        String expectedOutput = "Die Id der Brooklyn Nets lautet: 3Ausgewählte Saison: 2021/2022";
         String actualOutput = outputStream.toString();
 
         assertEquals(expectedOutput, actualOutput);
