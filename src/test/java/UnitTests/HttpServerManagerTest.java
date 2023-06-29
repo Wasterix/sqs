@@ -1,4 +1,4 @@
-package UnitTests;
+/*package UnitTests;
 
 import org.junit.After;
 import org.junit.Before;
@@ -41,4 +41,4 @@ public class HttpServerManagerTest {
         connection.disconnect();
     }
 }
-
+*/

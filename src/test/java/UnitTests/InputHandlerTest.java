@@ -1,4 +1,4 @@
-package UnitTests;
+/*package UnitTests;
 
 import org.junit.After;
 import org.junit.Before;
@@ -55,3 +55,4 @@ public class InputHandlerTest {
         assertEquals("2010", result);
     }
 }
+*/

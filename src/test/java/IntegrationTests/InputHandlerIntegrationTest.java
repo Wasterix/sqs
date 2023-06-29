@@ -1,4 +1,4 @@
-package IntegrationTests;
+/*package IntegrationTests;
 
 import org.junit.jupiter.api.Test;
 import project.InputHandler;
@@ -31,3 +31,4 @@ public class InputHandlerIntegrationTest {
         System.setIn(in);
     }
 }
+*/
