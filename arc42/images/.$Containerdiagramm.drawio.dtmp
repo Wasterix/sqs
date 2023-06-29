@@ -1,0 +1,64 @@
+<mxfile host="Electron" modified="2023-06-29T12:06:38.812Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36" version="21.5.1" etag="Uyr--YEVMcC8m5XKz4kh" type="device">
+  <diagram id="cJdwF8kZXWEPyK_CU6LK" name="Seite-1">
+    <mxGraphModel dx="956" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ED2iM6SWV-debf1f3VdI-1" value="&lt;b&gt;Anwende&lt;/b&gt;r&lt;br&gt;Will Info zu NBA-Team&lt;br&gt;für ein bestimmtes Jahr" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#008a00;fontColor=#ffffff;strokeColor=#000000;gradientColor=#99FF33;" vertex="1" parent="1">
+          <mxGeometry x="170" y="358" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-4" value="&lt;b&gt;Backend (Java)&lt;/b&gt;&lt;br&gt;&lt;br&gt;Verarbeitet Konsoleneingabe&lt;br&gt;Stellt Anfrage an REST-API&lt;br&gt;Verarbeitet REST-API&lt;br&gt;Erstellt HTTP Adresse&lt;br&gt;Schickt Ergebnis an HTTP-Frontend" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;gradientColor=#258825;" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="280" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-5" value="&lt;b&gt;Frontend (HTTP-Server)&lt;/b&gt;&lt;br&gt;&lt;br&gt;Stellt Benutzeroberfläche für Ausgabe dar" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;gradientColor=#183D18;gradientDirection=west;" vertex="1" parent="1">
+          <mxGeometry x="360" y="510" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-6" value="&lt;b&gt;Externe REST-API&lt;/b&gt;&lt;br&gt;&lt;br&gt;Stellt Informationen zu NBA-Spielen bereit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#737373;" vertex="1" parent="1">
+          <mxGeometry x="730" y="342" width="250" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-8" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;dashPattern=12 12;" edge="1" parent="1" source="ED2iM6SWV-debf1f3VdI-4" target="ED2iM6SWV-debf1f3VdI-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="450" as="sourcePoint" />
+            <mxPoint x="610" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-10" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;REST&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ED2iM6SWV-debf1f3VdI-8">
+          <mxGeometry x="0.0235" relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-9" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="ED2iM6SWV-debf1f3VdI-4" target="ED2iM6SWV-debf1f3VdI-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="350" as="sourcePoint" />
+            <mxPoint x="610" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-12" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;HTTP&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ED2iM6SWV-debf1f3VdI-9">
+          <mxGeometry x="-0.1702" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-7" value="" style="endArrow=classic;startArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startFill=0;dashed=1;dashPattern=12 12;" edge="1" parent="1" source="ED2iM6SWV-debf1f3VdI-1" target="ED2iM6SWV-debf1f3VdI-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="450" as="sourcePoint" />
+            <mxPoint x="610" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-11" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;Konsoleneingabe&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ED2iM6SWV-debf1f3VdI-7">
+          <mxGeometry x="0.0421" y="-2" relative="1" as="geometry">
+            <mxPoint x="-13" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-15" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;(Team + Jahr)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="384" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-17" value="" style="swimlane;startSize=0;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="300" width="330" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="ED2iM6SWV-debf1f3VdI-18" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;NBA-GAMES-APP&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="270" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
