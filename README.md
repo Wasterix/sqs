@@ -13,7 +13,17 @@ Folgende Softwarevoraussetzungen müssen zum lokalen Testen der Anwendung gegebe
 Die *NBA_Games_App* soll es dem Nutzer ermöglichen, Ergebnisse aller NBA-Spiele einer bestimmten Mannschaft, für eine bestimmmte Saison einzusehen. Die Ergebnisse sollen sortiert in Heim- und Auswärtsspiele sowie nach Datum in einer Tabelle auf einem HTTP-Server ausgegeben werden. 
 Um die Daten zu erhalten wird eine REST-API-Anfrage an die öffentlich verfügbare Homepage [balldontlie](https://www.balldontlie.io/) gestellt. 
 ### Qualitätsziele
-Auf relevante Qualitätsziele wird in [Kapitel 10](#Kapitel-10-qualität) eingegangen.
+Die Qualitätsziele nach ISO 25010 sind:
+- Funktionalität 
+- Wartbarkeit 
+- Sicherheit 
+- Benutzbarkeit 
+- Kompatibilität 
+- Verlässlichkeit
+- Portierbarkeit 
+- Performance.
+
+Sie werden in [Kapitel 10](#Kapitel-10-qualität) näher beschrieben.
 ### Stakeholder
 - Studenten des Fachs *Software Qualitätssicherung*
 - Dozent des Fachs *Software Qualitätssicherung*
@@ -118,5 +128,52 @@ Die wichtigsten Architekturentscheidungen werden als Architecture decision recor
 
 
 
-## Kapitel 10: Qualitätssichernde Maßnahmen und Tests
+## Kapitel 10: Qualität
+Im Folgenden werden Qualitätsmerkmale aufgeführt und erläutert, auf denen der Fokus bei Entwicklung lag. Als Basis der Entscheidungen dienen Qualitätsanforderungen nach ISO 25010.
+
+### Funktionalität
+Die Anwendung erfüllt alle funktionalen Anforderungen und bietet den als Ziel ausgegebenen Funktionsumfang. Relevante einzelne Komponenten und deren Zusammenspiel wurden mit Unit- und Integrationstests geprüft.  
+
+### Wartbarkeit
+Die Anwendung weist eine modulare interne Struktur auf, die auf der Verwendung der Maven-Struktur basiert. Dadurch können sich neue Entwickler schnell in das Projekt einarbeiten. Das Hinzufügen, Entfernen oder Erweitern von Plugins und Tests gestaltet sich sehr einfach. Die Verwendung der Maven-Struktur erleichtert somit die Wartung und Weiterentwicklung der Anwendung. Außerdem garantiert statische Codeanalyse durch Sonarcloud die Einhaltung von Code-Konventionen. 
+
+### Sicherheit
+Die Benutzeroberfläche wurde so konzipiert, dass fehlerhafte Eingaben effektiv vermieden werden. Durch kontinuierliche Codeanalyse und automatisierte Testläufe in der GitHub CI-Pipeline wird eine hohe Codequalität sichergestellt. Zusätzlich wird die Anwendung regelmäßig auf Sicherheitslücken und veraltete Abhängigkeiten überprüft, um eine sichere und aktuelle Umgebung zu gewährleisten.
+
+### Benutzbarkeit
+Die Anwendung stellt eine hohe Benutzerfreundlichkeit sicher, indem sie klar verständliche Konsolenaufforderungen verwendet. Potenzielle Fehleingaben werden erkannt und durch klare Anweisungen vermieden. Dies ermöglicht eine reibungslose und fehlerfreie Nutzung der Anwendung. Um dies zu gewährleisten, wurden sowohl Unit-Tests als auch Monkeytests durchgeführt. Dadurch wurden verschiedene Aspekte der Anwendung auf Funktionalität und Benutzerinteraktion umfassend getestet.
+
+### Kompatibilität
+Die Anwendung weist eine gute Kompatibilität auf, da sie REST-API und HTTP-Schnittstellen nutzt, um Daten von balldontlie abzurufen. Durch die Verwendung des JSON-Formats als Protokoll für den Datenaustausch ermöglicht die Anwendung eine nahtlose Integration mit anderen Systemen. Die Testbarkeit wird durch die klaren Schnittstellen und die Möglichkeit, Unittests und Integrationstests durchzuführen, unterstützt.
+
+### Verlässlichkeit
+Die Verfügbarkeit der externen REST-API wurde durch Availability-Tests überprüft. Obwohl die Verwendung einer internen Datenbank zur Zwischenspeicherung von Informationen die Zuverlässigkeit der Anwendung verbessern könnte, steht dies im Widerspruch zum eigentlichen Use-Case, bei dem der Zugriff auf eine umfangreiche Datenbank und die einfache Erweiterbarkeit der Software im Vordergrund stehen. 
+
+### Portierbarkeit
+Die Anwendung ist leicht portierbar, da sie auf standardisierte Technologien wie REST-API, HTTP und JSON setzt, die plattformunabhängig und weit verbreitet sind. Durch die Verwendung dieser Schnittstellen und Formate kann die Anwendung einfach auf verschiedene Betriebssysteme, Serverumgebungen oder Cloud-Plattformen portiert werden, ohne größere Anpassungen am Quellcode vornehmen zu müssen. Dies ermöglicht eine hohe Flexibilität und erleichtert die Bereitstellung der Anwendung in verschiedenen Umgebungen.
+
+### Performance
+Die Anwendung ist performant, da sie eine externe REST-API und das HTTP-Protokoll verwendet, um die Daten abzurufen und weiterzugeben. Dadurch kann sie schnell auf bereits optimierte Ressourcen zugreifen. Das effiziente HTTP-Protokoll, ermöglicht eine schnelle Übertragung der Daten. Diese Kombination aus externer Datenquelle und effizientem Protokoll ermöglicht eine effektive Datenverarbeitung und sorgt für eine gute Performance der Anwendung.
+
+## Kapitel 11: Qualitätssichernde Maßnahmen und Tests
+Die Qualitätsziele sind durch folgende Maßnahmen und Tests gesichert. Die Tests sind können lokal gestartet werden, sind aber auch automatisiert in der GitHub CI-Pipeline integriert. 
+
+### Unittests (Java Backend)
+- Testframework: JUnit, Mockito
+- Ordner: src/test/java/UnitTests
+- Bemerkung: Alle relevanten Methoden und Klassen wurden auf korrekte Funktionalität getestet. Dabei wurden Übergabeparameter gemockt und das Verhalten mit dem Erwartungswert verglichen.
+
+### Integrationtests
+- Framework: JUnit
+- Ordner: src/test/java/Integrationstests
+- Bemerkung: Das Zusammenspiel der einzelnen Komponenten wurde überprüft und sichergestellt, dass diese korrekt funktionieren, wenn sie zusammenarbeiten.
+
+### Monkeytest (Konsoleneingabe)
+- Bemerkung: Ein Monkeytest wurde durchgeführt, um die Robustheit der Anwendung hinsichtlich möglicher Fehleingaben zu testen. Dies ermöglichte die Identifizierung potenzieller Schwachstellen, auf die der Entwickler möglicherweise nicht gekommen wäre. Der Test wurde von Dritten ohne spezifische Einweisung durchgeführt, die aufgefordert wurden, die Anwendung mit beliebigen Eingaben zu testen und mögliche Fehlfunktionen zu provozieren.
+
+### Statische Codeanalyse
+- Tool: Sonarcloud, GitHub Actions
+- Ordner: .github/workflows, testing.yml
+- Bemerkung: In der CI-Pipeline wird mithilfe von Github Actions eine Verbindung zu Sonarcloud hergestellt. Bei jedem Push- oder Pullereignis wird der Code überprüft. Es wird eine statische Codeanalyse ausgelöst, deren Ergebnis auf Sonarcloud zu sehen ist. 
+
 
